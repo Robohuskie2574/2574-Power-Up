@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
 	public static OI oi;   //joystick
 	public static Subsystem lift;   //cascading lift
 	public static Subsystem arm;   //arm
+	public static Subsystem grabber;   //grabber
 	public static final Drive drive = new Drive();   //drivetrain
 	
 	Command m_autonomousCommand;
@@ -94,7 +95,7 @@ public class Robot extends TimedRobot {
 		gameData = DriverStation.getInstance().getGameSpecificMessage(); //Coloration for Switches and Scale
 		//"https://wpilib.screenstepslive.com/s/currentCS/m/getting_started/l/826278-2018-game-data-details"
 		robotPosition = DriverStation.getInstance().getLocation(); //Starting Position of Robot
-		//No code yet for Switch, only Close Scale (we are not programming to do anything with Far Scale, at least for the time being)
+		//No code yet for Scale, only Close Switch (we are not programming to do anything with Far Switch, at least for the time being)
 		if(robotPosition == 1) { //Left Starting Position
 			if(gameData.charAt(0) == 'L') {
 				new AutoSwL1(); //Autonomous for Left Switch; Position 1

@@ -1,19 +1,19 @@
 package org.usfirst.frc.team2574.robot.commands;
 
 import org.usfirst.frc.team2574.robot.Robot;
-import org.usfirst.frc.team2574.robot.subsystems.Arm;
+import org.usfirst.frc.team2574.robot.subsystems.Grabber;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ArmIn extends Command {
+public class GrabberClose extends Command {
 
-    public ArmIn() {
+    public GrabberClose() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.arm); // Uses Arm.java subsystem.
+    	requires(Robot.grabber);
     }
 
     // Called just before this Command runs the first time
@@ -31,8 +31,7 @@ public class ArmIn extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Arm.set(-.25);
-    	//opposite sign of in
+    	Grabber.set(-.25);
     }
 
     // Called when another command which requires one or more of the same

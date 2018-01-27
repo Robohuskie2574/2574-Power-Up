@@ -9,6 +9,8 @@ package org.usfirst.frc.team2574.robot;
 
 import org.usfirst.frc.team2574.robot.commands.ArmIn;
 import org.usfirst.frc.team2574.robot.commands.ArmOut;
+import org.usfirst.frc.team2574.robot.commands.GrabberClose;
+import org.usfirst.frc.team2574.robot.commands.GrabberOpen;
 import org.usfirst.frc.team2574.robot.commands.LiftDown;
 import org.usfirst.frc.team2574.robot.commands.LiftUp;
 
@@ -38,6 +40,9 @@ public class OI {
 	
 	Button armOut = new JoystickButton(stick, 3);
 	Button armIn = new JoystickButton(stick, 4);
+	
+	Button grabberClose = new JoystickButton(stick, 5);
+	Button grabberOpen = new JoystickButton(stick, 6);
 	//this assigns variables to buttons to be used later to assign the variables, and therefore the buttons, to commands
 	
 	public static double[] getDriveAxes() {
@@ -71,5 +76,9 @@ public class OI {
 		
 		armOut.whileHeld(new ArmOut());
 		armIn.whileHeld(new ArmIn());
+		
+		grabberClose.whileHeld(new GrabberClose());
+		grabberOpen.whileHeld(new GrabberOpen());
+		
 	}
 }
