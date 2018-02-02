@@ -1,6 +1,5 @@
 package org.usfirst.frc.team2574.robot.subsystems;
 
-import org.usfirst.frc.team2574.robot.Constants;
 import org.usfirst.frc.team2574.robot.RobotMap;
 import org.usfirst.frc.team2574.robot.commands.TeleDrive;
 
@@ -31,14 +30,8 @@ public class Drive extends Subsystem {
 	private static AnalogGyro gyro = new AnalogGyro(RobotMap.gyro);
     private static final double gyroPGain = 0.05;
     
-    
     public Drive() {
-    	leftF.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, Constants.kPIDLoopIdx, 0);
-    	
-    	leftF.config_kF(Constants.kPIDLoopIdx, 0.0, Constants.kTimeoutMs);
-		leftR.config_kP(Constants.kPIDLoopIdx, 0.1, Constants.kTimeoutMs);
-		rightF.config_kI(Constants.kPIDLoopIdx, 0.0, Constants.kTimeoutMs);
-		rightR.config_kD(Constants.kPIDLoopIdx, 0.0, Constants.kTimeoutMs);
+    	leftF.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
     }
     
     public static void cartesian(double x, double y, double rotation) {
@@ -57,6 +50,20 @@ public class Drive extends Subsystem {
     	cartesian(0,0,0);
     }
     
+    public static void driveStraightLen(double rotations) {
+    	zeroEncoders();
+    	gyro.reset();
+    	while(getLeftFPos() < rotations - 1) {
+    		cartesian(0,-0.4,-getGyroAngle() * gyroPGain);
+    		Timer.delay(.025);
+    	}
+    	while(getLeftFPos() < rotations ) {
+    		cartesian(0,-0.1,-getGyroAngle() * gyroPGain);
+    		Timer.delay(.025);
+    	}
+    	cartesian(0,0,0);
+    }
+    
     public static AnalogGyro getGyro() {  //gets gyro value
     	return gyro;
     }
@@ -68,6 +75,14 @@ public class Drive extends Subsystem {
     public static void resetGyro() {  //resets the gyro so that it is the same each time the robot powers up
     	gyro.calibrate();
     	gyro.reset();
+    }
+    
+    public static void zeroEncoders() {
+    	leftF.setSelectedSensorPosition(0, 0, 0);
+    }
+    
+    public static double getLeftFPos() {
+    	return leftF.getSelectedSensorPosition(0);
     }
     
     public static void safety(boolean enabled) {
