@@ -1,10 +1,9 @@
 package org.usfirst.frc.team2574.robot.subsystems;
 
-import org.usfirst.frc.team2574.robot.commands.LiftUp;
+import org.usfirst.frc.team2574.robot.RobotMap;
 import org.usfirst.frc.team2574.robot.commands.StopLift;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -14,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Lift extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	public static WPI_TalonSRX lift = new WPI_TalonSRX(5);
+	public static Spark lift = new Spark(RobotMap.lift);
 	
 	public Lift() {
 		

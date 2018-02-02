@@ -1,8 +1,11 @@
 package org.usfirst.frc.team2574.robot.subsystems;
 
+import org.usfirst.frc.team2574.robot.Constants;
 import org.usfirst.frc.team2574.robot.RobotMap;
 import org.usfirst.frc.team2574.robot.commands.TeleDrive;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
@@ -27,6 +30,16 @@ public class Drive extends Subsystem {
 	
 	private static AnalogGyro gyro = new AnalogGyro(RobotMap.gyro);
     private static final double gyroPGain = 0.05;
+    
+    
+    public Drive() {
+    	leftF.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, Constants.kPIDLoopIdx, 0);
+    	
+    	leftF.config_kF(Constants.kPIDLoopIdx, 0.0, Constants.kTimeoutMs);
+		leftR.config_kP(Constants.kPIDLoopIdx, 0.1, Constants.kTimeoutMs);
+		rightF.config_kI(Constants.kPIDLoopIdx, 0.0, Constants.kTimeoutMs);
+		rightR.config_kD(Constants.kPIDLoopIdx, 0.0, Constants.kTimeoutMs);
+    }
     
     public static void cartesian(double x, double y, double rotation) {
     	// Sets up drive system for TeleDrive and subsequently, OI.

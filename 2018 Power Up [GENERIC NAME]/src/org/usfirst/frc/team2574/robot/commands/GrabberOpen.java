@@ -3,6 +3,7 @@ package org.usfirst.frc.team2574.robot.commands;
 import org.usfirst.frc.team2574.robot.Robot;
 import org.usfirst.frc.team2574.robot.subsystems.Grabber;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -31,7 +32,7 @@ public class GrabberOpen extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Grabber.set(.25);
+    	Grabber.set(Value.kForward);
     }
 
     // Called when another command which requires one or more of the same

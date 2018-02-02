@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2574.robot.subsystems;
 
+import org.usfirst.frc.team2574.robot.RobotMap;
 import org.usfirst.frc.team2574.robot.commands.StopArm;
 
 import edu.wpi.first.wpilibj.Spark;
@@ -11,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Arm extends Subsystem {
     // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-	public static Spark arm = new Spark(6);
+    // here. Call these from Commands.my name a jeff
+	public static Spark arm = new Spark(RobotMap.arm);
 
 	public Arm() {
 		
