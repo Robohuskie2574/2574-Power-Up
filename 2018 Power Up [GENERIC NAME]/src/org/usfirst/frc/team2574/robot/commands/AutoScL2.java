@@ -11,13 +11,13 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutoSwL1 extends Command {
+public class AutoScL2 extends Command {
 
 	
 	private boolean finished = false;
 	//this might be redundant check if different than setting line 47 to return false as opposed to return finished -R.P.
 	
-    public AutoSwL1() {
+    public AutoScL2() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drive);
@@ -30,10 +30,15 @@ public class AutoSwL1 extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Drive.safety(false);
-    	//move forward 168" (middle of switch, includes crossing the auto line)
-    	Drive.driveStraight(.25, .5);
-    	Timer.delay(.2);
+    	//first move about three feet forward, rotate, then traverse yonder (UND) until middle then 168" in total- 4 ft, then ten feet and more until scale
+    	Drive.driveStraight(.5, .5);
+    	Timer.delay(.5);
     	Drive.cartesian(0, 0, 0);
+    	Drive.cartesian(0, 0, -90);
+    	Drive.driveStraight(.75, .75);
+    	Timer.delay(.1);
+    	Drive.cartesian(0, 0, 90);
+    	Drive.driveStraight(.75, 1);
     	//lift arm up ~2' (over switch fence)
     	Lift.timedset(.25, .25);
     	Timer.delay(.2);
