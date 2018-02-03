@@ -3,7 +3,6 @@ package org.usfirst.frc.team2574.robot.subsystems;
 import org.usfirst.frc.team2574.robot.RobotMap;
 import org.usfirst.frc.team2574.robot.commands.TeleDrive;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
