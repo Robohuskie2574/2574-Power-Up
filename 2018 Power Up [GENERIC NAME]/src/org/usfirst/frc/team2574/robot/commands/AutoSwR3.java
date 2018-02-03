@@ -1,7 +1,11 @@
 package org.usfirst.frc.team2574.robot.commands;
 
 import org.usfirst.frc.team2574.robot.Robot;
+import org.usfirst.frc.team2574.robot.subsystems.Arm;
+import org.usfirst.frc.team2574.robot.subsystems.Drive;
+import org.usfirst.frc.team2574.robot.subsystems.Lift;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -9,6 +13,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AutoSwR3 extends Command {
 
+	
+	private boolean finished = false;
     public AutoSwR3() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -21,6 +27,27 @@ public class AutoSwR3 extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+       	Drive.safety(false);
+       	Timer.delay(.2);
+        Drive.cartesian(0, 0, 0);
+    	//move forward 168" (middle of switch, includes crossing the auto line)
+    	Drive.driveStraight(.25, .5);
+    	Timer.delay(.2);
+    	//lift arm up ~2' (over switch fence)
+    	Lift.timedset(.25, .25);
+    	Timer.delay(.2);
+    	//rotate 90° to the left
+    	while (Drive.getGyroAngle() < -90) {
+    		Drive.cartesian(0, 0, -.38);
+    		Timer.delay(.05);
+    	}
+    	
+    		
+    	//shoot box out of arm
+    	Arm.set(.25);
+    	Timer.delay(.2);
+    	
+    	finished = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -30,6 +57,7 @@ public class AutoSwR3 extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	
     }
 
     // Called when another command which requires one or more of the same
