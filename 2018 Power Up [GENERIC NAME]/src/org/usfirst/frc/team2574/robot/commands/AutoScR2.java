@@ -11,11 +11,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutoSwR3 extends Command {
+public class AutoScR2 extends Command {
 
 	
 	private boolean finished = false;
-    public AutoSwR3() {
+    public AutoScR2() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drive);
@@ -69,6 +69,7 @@ public class AutoSwR3 extends Command {
     	Timer.delay(.2);
     	
     	finished = true;
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
