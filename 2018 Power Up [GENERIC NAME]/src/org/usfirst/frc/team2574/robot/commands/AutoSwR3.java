@@ -36,7 +36,7 @@ public class AutoSwR3 extends Command {
     	//lift arm up ~2' (over switch fence)
     	Lift.timedset(.25, .25);
     	Timer.delay(.2);
-    	//rotate 90° to the left
+    	//rotate 90 degrees to the left
     	while (Drive.getGyroAngle() < -90) {
     		Drive.cartesian(0, 0, -.38);
     		Timer.delay(.05);
