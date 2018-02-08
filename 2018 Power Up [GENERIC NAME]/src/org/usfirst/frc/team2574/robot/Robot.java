@@ -31,6 +31,7 @@ public class Robot extends TimedRobot {
 	public static Subsystem lift;   //cascading lift
 	public static Subsystem arm;   //arm
 	public static Subsystem grabber;   //grabber
+	public static Subsystem winch;   //winch
 	public static final Drive drive = new Drive();   //drivetrain
 	
 	Command m_autonomousCommand;

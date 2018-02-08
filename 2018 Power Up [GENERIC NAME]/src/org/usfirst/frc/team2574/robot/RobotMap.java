@@ -30,10 +30,11 @@ public class RobotMap {
 	//gyro for proper autonomous
 	
 	public static int lift = 5;
-	public static int arm = 6;
 	public static int grabber1 = 4;
 	public static int grabber2 = 5;
-
+	public static int arm = 6;
+	public static int arm2 = 7;
+	public static int winch = 8;
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
