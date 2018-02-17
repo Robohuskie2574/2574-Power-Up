@@ -18,6 +18,7 @@ import org.usfirst.frc.team2574.robot.subsystems.Drive;
 import org.usfirst.frc.team2574.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team2574.robot.subsystems.Grabber;
 import org.usfirst.frc.team2574.robot.subsystems.Lift;
+import org.usfirst.frc.team2574.robot.subsystems.Winch;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,8 +34,10 @@ public class Robot extends TimedRobot {
 	public static final Lift lift = new Lift();   //cascading lift
 	public static final Arm arm = new Arm();   //arm
 	public static final Grabber grabber = new Grabber();   //grabber
-	public static final Drive drive = new Drive();   //drivetrain
+	public static final Winch winch = new Winch(); //winch
 	
+	public static final Drive drive = new Drive();   //drivetrain
+
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
