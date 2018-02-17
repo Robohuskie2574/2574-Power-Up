@@ -13,9 +13,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Arm extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.my name a jeff
+
 	public static Spark arm = new Spark(RobotMap.arm);
 	public static Spark arm2 = new Spark(RobotMap.arm2);
-	
+
 	public Arm() {
 		
 	}

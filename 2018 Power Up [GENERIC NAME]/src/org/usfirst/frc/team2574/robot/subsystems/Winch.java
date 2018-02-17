@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Winch extends Subsystem {
     // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+    // here. Call these from Commands.	
 	public static Spark winch = new Spark(RobotMap.winch);
 	
 	public Winch() {
