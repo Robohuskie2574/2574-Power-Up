@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -14,8 +13,11 @@ import org.usfirst.frc.team2574.robot.commands.AutoCrossLine;
 import org.usfirst.frc.team2574.robot.commands.AutoSwL1;
 import org.usfirst.frc.team2574.robot.commands.AutoSwR3;
 import org.usfirst.frc.team2574.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2574.robot.subsystems.Arm;
 import org.usfirst.frc.team2574.robot.subsystems.Drive;
 import org.usfirst.frc.team2574.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team2574.robot.subsystems.Grabber;
+import org.usfirst.frc.team2574.robot.subsystems.Lift;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,9 +30,9 @@ public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem
 			= new ExampleSubsystem();
 	public static OI oi;   //joystick
-	public static Subsystem lift;   //cascading lift
-	public static Subsystem arm;   //arm
-	public static Subsystem grabber;   //grabber
+	public static final Lift lift = new Lift();   //cascading lift
+	public static final Arm arm = new Arm();   //arm
+	public static final Grabber grabber = new Grabber();   //grabber
 	public static final Drive drive = new Drive();   //drivetrain
 	
 	Command m_autonomousCommand;

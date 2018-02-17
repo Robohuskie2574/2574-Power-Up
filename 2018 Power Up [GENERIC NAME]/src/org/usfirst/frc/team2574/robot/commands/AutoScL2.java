@@ -42,7 +42,7 @@ public class AutoScL2 extends Command {
     	//lift arm up ~2' (over switch fence)
     	Lift.timedset(.25, .25);
     	Timer.delay(.2);
-    	//rotate 90° to the right, I am likely going to steal last years rotation code (AutoLeftGear), but it requires encoders on the motors
+    	//rotate 90 degrees to the right, I am likely going to steal last years rotation code (AutoLeftGear), but it requires encoders on the motors
     	while (Drive.getGyroAngle() < 90) {
     		Drive.cartesian(0,0, .38);
     		Timer.delay(.05);

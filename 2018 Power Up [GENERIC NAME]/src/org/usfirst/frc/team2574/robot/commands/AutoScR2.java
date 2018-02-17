@@ -35,7 +35,7 @@ public class AutoScR2 extends Command {
     	Drive.driveStraight(.25, .1);
     	Timer.delay(.2);
     	
-    	//rotate 90° to the right
+    	//rotate 90 degrees to the right
     	while (Drive.getGyroAngle() < 90) {
     		Drive.cartesian(0, 0, .38);
     		Timer.delay(.05);
@@ -44,7 +44,7 @@ public class AutoScR2 extends Command {
        	Drive.driveStraight(.25, .5);
         Timer.delay(.2);		
         	
-        //rotate 90° to the left
+        //rotate 90 degrees to the left
     	while (Drive.getGyroAngle() < -90) {
     		Drive.cartesian(0, 0, -.38);
     		Timer.delay(.05);
@@ -54,7 +54,7 @@ public class AutoScR2 extends Command {
        	Drive.driveStraight(.25, .5);
         Timer.delay(.2);		
 
-    	//rotate 90° to the right
+    	//rotate 90 degrees to the right
     	while (Drive.getGyroAngle() < 90) {
     		Drive.cartesian(0, 0, .38);
     		Timer.delay(.05);
