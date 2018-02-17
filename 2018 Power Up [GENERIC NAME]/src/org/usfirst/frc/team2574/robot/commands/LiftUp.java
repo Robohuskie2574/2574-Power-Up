@@ -13,7 +13,7 @@ public class LiftUp extends Command {
     public LiftUp() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.lift); // Uses Lift.java subsystem.
+    	//requires(Robot.lift); // Uses Lift.java subsystem.
     }
 
     // Called just before this Command runs the first time

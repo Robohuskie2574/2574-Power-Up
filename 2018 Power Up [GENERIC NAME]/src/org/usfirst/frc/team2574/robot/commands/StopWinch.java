@@ -13,7 +13,7 @@ public class StopWinch extends Command {
     public StopWinch() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.winch);
+    	//requires(Robot.winch);
     }
 
     // Called just before this Command runs the first time

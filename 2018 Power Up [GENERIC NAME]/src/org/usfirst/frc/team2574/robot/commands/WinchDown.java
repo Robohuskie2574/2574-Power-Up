@@ -13,7 +13,7 @@ public class WinchDown extends Command {
     public WinchDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.winch); // Uses Winch.java subsystem.
+    	//requires(Robot.winch); // Uses Winch.java subsystem.
     }
 
     // Called just before this Command runs the first time

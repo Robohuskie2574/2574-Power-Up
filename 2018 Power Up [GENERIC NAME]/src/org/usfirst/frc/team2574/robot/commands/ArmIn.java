@@ -13,7 +13,7 @@ public class ArmIn extends Command {
     public ArmIn() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.arm); // Uses Arm.java subsystem.
+    	//requires(Robot.arm); // Uses Arm.java subsystem.
     }
 
     // Called just before this Command runs the first time

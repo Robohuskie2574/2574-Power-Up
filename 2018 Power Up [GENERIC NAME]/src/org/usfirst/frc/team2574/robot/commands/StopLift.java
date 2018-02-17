@@ -13,7 +13,7 @@ public class StopLift extends Command {
     public StopLift() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.lift);
+    	//requires(Robot.lift);
     }
 
     // Called just before this Command runs the first time

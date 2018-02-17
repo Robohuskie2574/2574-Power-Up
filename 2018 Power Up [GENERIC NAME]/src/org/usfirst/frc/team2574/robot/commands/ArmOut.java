@@ -13,7 +13,7 @@ public class ArmOut extends Command {
     public ArmOut() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.arm); // Uses Lift.java subsystem.
+    	//requires(Robot.arm); // Uses Lift.java subsystem.
     }
 
     // Called just before this Command runs the first time

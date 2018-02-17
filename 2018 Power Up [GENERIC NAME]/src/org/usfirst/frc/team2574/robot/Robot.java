@@ -2,6 +2,7 @@
 
 package org.usfirst.frc.team2574.robot;
 
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -11,6 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2574.robot.commands.AutoCrossLine;
+import org.usfirst.frc.team2574.robot.commands.AutoScL2;
+import org.usfirst.frc.team2574.robot.commands.AutoScR2;
 import org.usfirst.frc.team2574.robot.commands.AutoSwL1;
 import org.usfirst.frc.team2574.robot.commands.AutoSwR3;
 import org.usfirst.frc.team2574.robot.commands.ExampleCommand;
@@ -91,12 +94,20 @@ public class Robot extends TimedRobot {
 			m_autonomousCommand.start();
 		}
 		
-		String gameData;
+		NetworkTableInstance offSeasonNetworkTable =
+				NetworkTableInstance.create();
+				offSeasonNetworkTable.startClient("10.0.100.5");
+				String gameData = offSeasonNetworkTable
+				.getTable("OffseasonFMSInfo")
+				.getEntry("GameData")
+				.getString("defaultValue"); //for use at week 0 only
+		
+		//String gameData; //for use at actual competitions
 		int robotPosition;
 		gameData = DriverStation.getInstance().getGameSpecificMessage(); //Coloration for Switches and Scale
 		//"https://wpilib.screenstepslive.com/s/currentCS/m/getting_started/l/826278-2018-game-data-details"
 		robotPosition = DriverStation.getInstance().getLocation(); //Starting Position of Robot
-		//No code yet for Scale, only Close Switch (we are not programming to do anything with Far Switch, at least for the time being)
+		//We are not programming to do anything with Far Switch, at least for the time being
 		if(robotPosition == 1) { //Left Starting Position
 			if(gameData.charAt(0) == 'L') {
 				new AutoSwL1(); //Autonomous for Left Switch; Position 1
@@ -104,7 +115,11 @@ public class Robot extends TimedRobot {
 				new AutoCrossLine(); //Autonomous for Right Switch; Position 1
 			}
 		} if(robotPosition == 2) { //Center Starting Position
-			new AutoCrossLine(); //Autonomous for Either Switch; Position 2
+			if(gameData.charAt(1) == 'L') {
+				new AutoScL2(); //Autonomous for Left Scale; Position 2
+			} else {
+				new AutoScR2(); //Autonomous for Right Scale; Position 2
+			}
 		} else {
 			if(gameData.charAt(0) == 'R') { //Right Starting Position
 				new AutoSwR3(); //Autonomous for Right Switch; Position 3
