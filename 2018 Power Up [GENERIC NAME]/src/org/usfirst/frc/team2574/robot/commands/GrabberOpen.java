@@ -14,7 +14,7 @@ public class GrabberOpen extends Command {
     public GrabberOpen() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	//requires(Robot.grabber);
+    	requires(Robot.grabber);
     }
 
     // Called just before this Command runs the first time

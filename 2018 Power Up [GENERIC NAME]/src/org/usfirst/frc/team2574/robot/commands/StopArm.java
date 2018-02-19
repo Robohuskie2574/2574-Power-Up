@@ -13,7 +13,7 @@ public class StopArm extends Command {
     public StopArm() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	//requires(Robot.arm);
+    	requires(Robot.arm);
     }
 
     // Called just before this Command runs the first time
@@ -31,7 +31,7 @@ public class StopArm extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Arm.set(0);
+    	Arm.set(.125);
     	//zero, as in zero percent power, indicates cease in function
     }
 

@@ -3,7 +3,6 @@ package org.usfirst.frc.team2574.robot.subsystems;
 import org.usfirst.frc.team2574.robot.RobotMap;
 import org.usfirst.frc.team2574.robot.commands.TeleDrive;
 
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
@@ -18,7 +17,8 @@ public class Drive extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	//public static TalonSRX variable = new TalonSRX(RobotMap.correspondingVariable);  --  general form for motor with TalonSRX motor controller
+	private static AnalogGyro gyro = new AnalogGyro(RobotMap.gyro);
+	
 	public static WPI_TalonSRX leftF = new WPI_TalonSRX(RobotMap.leftFrontId);
 	public static WPI_TalonSRX leftR = new WPI_TalonSRX(RobotMap.leftRearId);
 	public static WPI_TalonSRX rightF = new WPI_TalonSRX(RobotMap.rightFrontId);
@@ -26,16 +26,19 @@ public class Drive extends Subsystem {
 	
 	public static MecanumDrive drive = new MecanumDrive(leftF, leftR, rightF, rightR);
 	
-	private static AnalogGyro gyro = new AnalogGyro(RobotMap.gyro);
     private static final double gyroPGain = 0.05;
     
     public Drive() {
-    	leftF.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
+    	leftF.setInverted(true);
+    	leftR.setInverted(true);
+    	rightF.setInverted(true);
+    	rightR.setInverted(true);
+    	//leftF.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
     }
     
     public static void cartesian(double x, double y, double rotation) {
     	// Sets up drive system for TeleDrive and subsequently, OI.
-    	drive.driveCartesian(x, y , rotation, 0);
+    	drive.driveCartesian(x, y, rotation);
     }
     
     public static void driveStraight(double y, double time) {  //uses gyro to keep straight in autonomous for some y-axis power and some time
@@ -49,7 +52,7 @@ public class Drive extends Subsystem {
     	cartesian(0,0,0);
     }
     
-    public static void driveStraightLen(double rotations) {
+    /* public static void driveStraightLen(double rotations) {
     	zeroEncoders();
     	gyro.reset();
     	while(getLeftFPos() < rotations - 1) {
@@ -61,7 +64,7 @@ public class Drive extends Subsystem {
     		Timer.delay(.025);
     	}
     	cartesian(0,0,0);
-    }
+    } */
     
     public static AnalogGyro getGyro() {  //gets gyro value
     	return gyro;
@@ -76,13 +79,13 @@ public class Drive extends Subsystem {
     	gyro.reset();
     }
     
-    public static void zeroEncoders() {
+    /* public static void zeroEncoders() {
     	leftF.setSelectedSensorPosition(0, 0, 0);
     }
     
     public static double getLeftFPos() {
     	return leftF.getSelectedSensorPosition(0);
-    }
+    } */
     
     public static void safety(boolean enabled) {
     	//sets up safety for autonomous

@@ -2,7 +2,6 @@
 
 package org.usfirst.frc.team2574.robot;
 
-import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -31,15 +30,15 @@ import org.usfirst.frc.team2574.robot.subsystems.Winch;
  * project.
  */
 public class Robot extends TimedRobot {
-	public static final ExampleSubsystem kExampleSubsystem
-			= new ExampleSubsystem();
+	public static final ExampleSubsystem kExampleSubsystem = new ExampleSubsystem();
 	public static OI oi;   //joystick
+	
+	public static final Drive drive = new Drive();   //drivetrain
 	public static final Lift lift = new Lift();   //cascading lift
 	public static final Arm arm = new Arm();   //arm
 	public static final Grabber grabber = new Grabber();   //grabber
 	public static final Winch winch = new Winch(); //winch
 	
-	public static final Drive drive = new Drive();   //drivetrain
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -51,8 +50,12 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		m_chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		m_chooser.addDefault("Cross Line; Positions 1 and 3", new AutoCrossLine()); //chooser to manually select autonomous modes for testing
+		//m_chooser.addObject("My Auto", new MyAutoCommand());
+		m_chooser.addObject("Left Switch; Position 1", new AutoSwL1());
+		m_chooser.addObject("Left Scale; Position 2", new AutoSwL1());
+		m_chooser.addObject("Right Scale; Position 2", new AutoSwL1());
+		m_chooser.addObject("Right Switch; Position 3", new AutoSwL1());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
@@ -98,15 +101,15 @@ public class Robot extends TimedRobot {
 			m_autonomousCommand.start();
 		}
 		
-		NetworkTableInstance offSeasonNetworkTable =
+		/* NetworkTableInstance offSeasonNetworkTable =
 				NetworkTableInstance.create();
 				offSeasonNetworkTable.startClient("10.0.100.5");
 				String gameData = offSeasonNetworkTable
 				.getTable("OffseasonFMSInfo")
 				.getEntry("GameData")
-				.getString("defaultValue"); //for use at week 0 only
+				.getString("defaultValue"); */ //for use at week 0 only
 		
-		//String gameData; //for use at actual competitions
+		String gameData; //for use at actual competitions
 		int robotPosition;
 		gameData = DriverStation.getInstance().getGameSpecificMessage(); //Coloration for Switches and Scale
 		//"https://wpilib.screenstepslive.com/s/currentCS/m/getting_started/l/826278-2018-game-data-details"

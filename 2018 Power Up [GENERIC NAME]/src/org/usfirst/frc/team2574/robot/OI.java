@@ -37,17 +37,17 @@ public class OI {
 	// Likely to only need one joystick, the numbers only matter due to sequence and not specific USB ports.
 	// More joysticks will make this more complicated, but mostly in action and not in programming, due to unplugging between matches.
 	
-	Button liftUp = new JoystickButton(stick, 2);
-	Button liftDown = new JoystickButton(stick, 1);
+	Button liftUp = new JoystickButton(stick, 7);
+	Button liftDown = new JoystickButton(stick, 9);
 	
-	Button armOut = new JoystickButton(stick, 3);
-	Button armIn = new JoystickButton(stick, 4);
+	Button armOut = new JoystickButton(stick, 2);
+	Button armIn = new JoystickButton(stick, 1);
 	
 	Button grabberClose = new JoystickButton(stick, 5);
-	Button grabberOpen = new JoystickButton(stick, 6);
+	Button grabberOpen = new JoystickButton(stick, 3);
 	
-	Button winchUp = new JoystickButton(stick, 7);
-	Button winchDown = new JoystickButton(stick, 8);
+	Button winchUp = new JoystickButton(stick, 8);
+	Button winchDown = new JoystickButton(stick, 10);
 	//this assigns variables to buttons to be used later to assign the variables, and therefore the buttons, to commands
 	
 	public static double[] getDriveAxes() {

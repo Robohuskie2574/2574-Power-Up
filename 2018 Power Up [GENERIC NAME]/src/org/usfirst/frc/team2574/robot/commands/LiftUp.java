@@ -31,7 +31,7 @@ public class LiftUp extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Lift.set(.25);
+    	Lift.set(.85);
     }
 
     // Called when another command which requires one or more of the same

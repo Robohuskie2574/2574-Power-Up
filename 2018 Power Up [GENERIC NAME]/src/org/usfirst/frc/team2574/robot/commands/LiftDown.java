@@ -13,7 +13,7 @@ public class LiftDown extends Command {
     public LiftDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	//requires(Robot.lift); // Uses Lift.java subsystem.
+    	requires(Robot.lift); // Uses Lift.java subsystem.
     }
 
     // Called just before this Command runs the first time
@@ -31,7 +31,7 @@ public class LiftDown extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Lift.set(-.25);
+    	Lift.set(-.5);
     	//sign opposite of LiftUp.java command
     }
 

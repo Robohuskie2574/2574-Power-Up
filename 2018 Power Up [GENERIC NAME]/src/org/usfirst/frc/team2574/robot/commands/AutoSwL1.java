@@ -35,7 +35,7 @@ public class AutoSwL1 extends Command {
     	Timer.delay(.2);
     	Drive.cartesian(0, 0, 0);
     	//lift arm up ~2' (over switch fence)
-    	Lift.timedset(.25, .25);
+    	Lift.timedset(.25, .125);
     	Timer.delay(.2);
     	//rotate 90 degrees to the right, I am likely going to steal last years rotation code (AutoLeftGear), but it requires encoders on the motors
     	while (Drive.getGyroAngle() < 90) {
@@ -45,7 +45,7 @@ public class AutoSwL1 extends Command {
     	
     	
     	//shoot box out of arm
-    	Arm.set(.25);
+    	Arm.set(-.25);
     	Timer.delay(.2);
     	//Drive.driveStraight(-.25, .5);
     	

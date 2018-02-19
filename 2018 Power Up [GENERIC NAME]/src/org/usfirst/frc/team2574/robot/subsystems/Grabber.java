@@ -13,14 +13,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Grabber extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	//public static DoubleSolenoid grabber = new DoubleSolenoid(RobotMap.grabber1,RobotMap.grabber2);
+	public static DoubleSolenoid grabber = new DoubleSolenoid(RobotMap.grabber1,RobotMap.grabber2);
 	
 	public Grabber() {
 		
 	}
 	
 	public static void set(Value direction) {
-		//grabber.set(direction);
+		grabber.set(direction);
 	}
 	
     public void initDefaultCommand() {

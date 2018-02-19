@@ -61,11 +61,11 @@ public class AutoScR2 extends Command {
     	}
     	
     	//lift arm up ~6' (over scale)
-       	Lift.timedset(.25, .75);
+       	Lift.timedset(.25, .125);
        	Timer.delay(.2);
     	    		
     	//shoot box out of arm
-    	Arm.set(.25);
+    	Arm.set(-.25);
     	Timer.delay(.2);
     	
     	finished = true;

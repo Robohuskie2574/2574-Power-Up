@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class TeleDrive extends Command {
 	
-	private static double deadzone = 0.2;
+	private static double deadzone = 0.35;
 
     public TeleDrive() {
         // Use requires() here to declare subsystem dependencies
